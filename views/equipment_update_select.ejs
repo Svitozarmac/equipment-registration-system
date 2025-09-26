@@ -1,0 +1,29 @@
+<div class="body-content">
+    <h2><%= title %> </h2>
+    
+    <% if (error_message) { %>
+        <div class="form-aligned-message">
+            <h4><%= error_message %></h4>
+        </div>
+    <% } %>
+
+    <form id="form" action="/equipment/update" method="post">
+        <fieldset class="form-group">
+            <label for="equipmentid">Select equipment to update:</label>
+            <select id="equipmentid" name="equipmentid" class="form-control">
+                <option value="" disabled selected>--Please select an equipment--</option>
+                <% equipment_list.forEach(function(item) { %>
+                    <option value="<%= item._id %>">
+                        <%= item.name %> | <%= item.type %> | <%= item.room.name %>
+                    </option>
+                <% }); %>
+            </select>
+        </fieldset>
+
+        <p>You will be redirected to update form.</p>
+   
+        <div class="btn-submit-layout">
+            <button class="btn-update-redirect" type="submit" name="action" value="update">Submit</button> 
+        </div>   
+    </form>
+</div>

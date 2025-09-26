@@ -1,0 +1,52 @@
+<div class="body-content">
+    <h2><%= title_search %></h2>
+
+      <% if (error_message) { %>
+        <div class="form-aligned-message">
+            <h4><%= error_message %></h4>
+        </div>
+    <% } %>
+
+    <% if (search_) { %>
+        <form id="form" action="" method="post">
+            <fieldset class="form-group">
+                <label for="type">Select Type:</label>
+                <select id="type" name="type" class="form-control" required>
+                    <option selected disabled>--Please select a type--</option>
+                    <% equipment_types.forEach(function(type) { %>
+                    <option value="<%= type %>" ><%= type %></option>
+                    <% }); %>
+                </select>
+            </fieldset>
+
+            <div class="btn-submit-layout">
+                <button class="btn-search" type="submit">Search</button>
+            </div>
+        </form>
+    <% } %>
+
+    <% if (equipment_list && equipment_list.length) { %>
+        <div class="table-wrapper">
+            <table class="equipment-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% equipment_list.forEach(function(item) { %>
+                        <tr>
+                            <td><a href="<%= item.url %>"><%= item.name %></a></td>
+                            <td><%= item.type %></td>
+                            <td>€<%= item.cost_formatted %></td>
+                        </tr>
+                    <% }) %>  
+                </tbody>
+            </table>
+        </div>
+    <% } else if (!search_ && type){ %>
+       <h3>No equipment was found with the type: <%= type %></h3>
+    <% } %>
+</div>

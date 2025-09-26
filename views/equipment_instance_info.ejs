@@ -1,0 +1,38 @@
+<div class="body-content">
+    <% if (success_message) { %>
+        <h2><%= success_message %></h2>
+    <% } %>
+
+   <div class="info-container">
+        <% if (equipment_instance && !isUpdateReport) { %>
+            <p><strong>Equipment ID:</strong> <%= equipment_instance._id %></p>
+            <p><strong>Equipment Name: </strong><%= equipment_instance.name %></p>
+            <p><strong>Type: </strong><%= equipment_instance.type %></p>
+            <p><strong>Cost: </strong>€<%= equipment_instance.cost_formatted %></p>
+            <p><strong>Room: </strong><%= equipment_instance.room.name %>, <%= equipment_instance.room.location %></p>
+            <p><strong>Registered by: </strong><%= equipment_instance.registeredBy %></p>
+            <p><strong>Date: </strong><%= equipment_instance.date_formatted %></p>
+            <p><strong>Last Updated: </strong><%= equipment_instance.dateUpdated_formatted %></p>
+        <% } %>
+
+        <% if (equipment_instance && isUpdateReport) { %>
+            <p><strong>Equipment ID:</strong> <%= equipment_instance._id %></p>
+            <p><strong>Equipment Name: </strong><%= equipment_instance.name %></p>
+            <p><strong>Type: </strong><%= equipment_instance.type %></p>
+            <p><strong>Cost: </strong>€<%= equipment_instance.cost_formatted %></p>
+            <p><strong>Room: </strong><%= equipment_instance.room.name %>, <%= equipment_instance.room.location %></p>
+            <p><strong>Registered by: </strong><%= equipment_instance.registeredBy %></p>
+            <p><strong>Last Updated: </strong><%= equipment_instance.dateUpdated_formatted %></p>
+        <% } %>
+
+        <% if (!isDelete) { %>
+            <hr>
+            <p>
+                <a href="<%=equipment_instance.url %>/delete">Delete equipment</a>
+            </p>
+            <p>
+                <a href="<%=equipment_instance.url %>/update">Update equipment</a>
+            </p>
+        <% } %>  
+   </div>
+</div>

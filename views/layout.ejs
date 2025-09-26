@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://kit.fontawesome.com/a111715595.js" crossorigin="anonymous"></script> <!-- Add icon library -->
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <!-- Header -->
+            <%- include('partials/header.ejs') %> 
+
+            <!-- Top Navigation -->
+            <nav class="topnav">
+                <div class="nav-buttons">
+                    <a href="/"><i class="fa-solid fa-house"></i>Home</a>
+                    <a href="/about"><i class="fa-solid fa-circle-info"></i>About</a>
+                    <a href="/help"><i class="fas fa-question-circle"></i>Help</a>
+                </div>
+            </nav> 
+
+            <!-- Page Layout (Full-width container)-->
+            <div class="layout-home">
+                <!-- Main Content -->
+                <main class="main-layout">
+                    <!-- Content block inserted dynamically -->
+                    <%- body %> <!-- This line renders the child view content (from the child template)-->
+                </main> 
+            </div>
+            <!-- Footer -->
+            <%- include('partials/footer.ejs') %>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('partials/header.ejs') %>  
+
+    <!-- Top Navigation -->
+    <nav class="topnav">
+        Welcome to the system - manage and track your equipment.
+    </nav>
+    <!-- Page Layout -->
+    <div class="layout">
+        <aside class="sidenav">
+            <ul>
+                <li><a href="/equipment/add">Register Equipment</a></li>
+                <li><a href="/equipment/:id/delete/">Delete Equipment</a></li>
+                <li><a>Edit Equipment</a></li>
+                <li><a>Search Equipment By Room</a></li>
+                <li><a>Search Equipment By Name</a></li>
+                <li><a>Search Equipment By Type</a></li>
+                <li><a>About</a></li>
+                <li><a>Help</a></li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <h2>Welcome!</h2>
+            <p>This is the home page of the Equipment Registration System.</p>
+            <p>Use the menu on the left to navigate the system.</p>
+        </main>
+    </div>
+
+    <!-- footer -->
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

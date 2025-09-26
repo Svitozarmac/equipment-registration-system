@@ -1,0 +1,34 @@
+<div class="body-content">
+    <h2><%= title %> </h2>
+    
+    <form id="form" action="<%= equipment_by_id ? ('/equipment/' + equipment_by_id._id + '/delete?_method=delete') : '/equipment/delete?_method=delete' %>" method="post">
+        <% if(equipment_by_id) { %>
+            <p><strong>Selected Equipment:</strong> <%= equipment_by_id.name %> | <%= equipment_by_id.type %> | <%= equipment_by_id.room.name %></p>
+        <% } else { %>
+            <% if (error_message) { %>
+                <div class="form-aligned-message">
+                    <h4><%= error_message %></h4>
+                </div>
+            <% } %>
+            <fieldset class="form-group">
+                <label for="equipmentid">Select equipment to delete:</label>
+                <select id="equipmentid" name="equipmentid" class="form-control">
+                    <option value="" disabled selected>--Please select an equipment--</option>
+                    <% equipment_list.forEach(function(item) { %>
+                        <option value="<%= item._id %>">
+                            <%= item.name %> | <%= item.type %> | <%= item.room.name %>
+                        </option>
+                    <% }); %>
+                </select>
+            </fieldset>
+        <% } %>
+        
+        <p><strong>Do you really want to delete this equipment?</strong></p>
+       
+        <div class="btn-submit-layout">
+            <button class="btn-delete" type="submit" name="action" value="delete">Delete</button> 
+            <button class="btn-cancel" type="submit" name="action" value="cancel">Cancel</button>
+        </div>
+        
+    </form>
+</div>

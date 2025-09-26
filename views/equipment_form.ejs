@@ -1,0 +1,56 @@
+<div class="body-content">
+    <h2><%= title %></h2>
+
+    <form id="form" onsubmit="return validateForm()" action="/equipment/create" method="post">
+        <fieldset class="form-group">
+            <label for="name">Equipment Name:</label>
+            <input class="form-control" name="name" id="name" type="text" placeholder="HP EliteDisplay, HP LaserJet Pro, TP-Link AX10" value="" required>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="type">Type:</label>
+            <select id="type" name="type" class="form-control" required>
+            <option selected disabled>--Please select a type--</option>
+                <% equipment_types.forEach(function(type) { %>
+                    <option value="<%= type %>"><%= type %></option>
+                <% }); %>
+            </select>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Cost:</label>
+            <input class="form-control" id="cost" name="cost" type="number" required placeholder="120" step="0.01">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="room">Room:</label>
+            <select id="room" name="room" class="form-control" required>
+                <option selected disabled>--Please select a room--</option>
+                <% room_list.forEach(function(room) { %>
+                    <option value="<%= room._id %>"><%= room.name %></option>
+                <% }); %>
+            </select>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="reg_name">Your name:</label>
+            <input class="form-control" name="reg_name" id="reg_name" type="text" placeholder="John" value="" required>
+        </fieldset>
+
+        <div class="btn-submit-layout">
+            <button class="btn-submit" type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const reg_name = document.getElementById('reg_name').value.trim();
+            if (name.length < 1 ||  reg_name.length < 1) {
+                alert("Entered value must be at least 1 non-space characters long.");
+                return false; // prevents form submission
+            }
+            return true; // allows form submission
+        }
+    </script>
+</div>

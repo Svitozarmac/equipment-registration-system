@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://kit.fontawesome.com/a111715595.js" crossorigin="anonymous"></script><!-- Add icon library -->
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- header -->
+      <%- include('partials/header.ejs') %>  
+
+      <!-- Top Navigation -->
+      <nav class="topnav">
+          Welcome to the system - manage and track your equipment.
+      </nav>
+      <!-- Page Layout -->
+      <div class="layout-home">
+          <!-- Sidebar menu -->
+          <aside class="sidenav">
+              <ul>
+                  <li><a href="/equipment/create">Register Equipment</a></li>
+                  <li><a href="/equipment/delete">Delete Equipment</a></li>
+                  <li><a href="/equipment/update">Edit Equipment</a></li>
+                  <li><a href="/equipment/all">List All Equipment</a></li>
+                  <li><a href="/equipment/search/room">Search Equipment By Room</a></li>
+                  <li><a href="/equipment/search/name">Search Equipment By Name</a></li>
+                  <li><a href="/equipment/search/type">Search Equipment By Type</a></li>
+                  <li><a href="/equipment/about">About</a></li>
+                  <li><a href="/equipment/help">Help</a></li>
+              </ul>
+          </aside>
+          <!-- Main content -->
+          <main class="home-main">
+              <div class="home-main-text">
+                <h3>Welcome!</h3>
+                <p>This is the home page of the Equipment Registration System.</p>
+                <p>Use the menu on the left to navigate the system.</p>
+              </div>
+          </main>
+      </div>
+
+      <!-- footer -->
+      <%- include('partials/footer.ejs') %>
+    </div>
+  </body>
+</html>

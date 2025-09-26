@@ -1,0 +1,61 @@
+<div class="body-content">
+    <h2><%= title_search %></h2>
+    
+     <% if (error_message) { %>
+        <div class="form-aligned-message">
+            <h4><%= error_message %></h4>
+        </div>
+   
+    <% } %>
+        
+    <% if (search_) { %>
+        <form onsubmit="return validateForm()" id="form" action="" method="post">
+            <fieldset class="form-group">
+                <label for="name">Enter Equipment Name:</label>
+                <input class="form-control" name="name" id="name" type="text" value=""  placeholder="HP EliteDisplay, HP LaserJet Pro, TP-Link AX10" required>
+            </fieldset>
+
+            <div class="btn-submit-layout">
+                <button class="btn-search" type="submit">Search</button>
+            </div>
+        </form>
+    <% } %>
+
+    <% if (equipment_list && equipment_list.length) { %>
+        <div class="table-wrapper">
+            <table class="equipment-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% equipment_list.forEach(function(item) { %>
+                        <tr>
+                            <td><a href="<%= item.url %>"><%= item.name %></a></td>
+                            <td><%= item.type %></td>
+                            <td>€<%= item.cost_formatted %></td>
+                        </tr>
+                    <% }) %>  
+                </tbody>
+            </table>
+        </div>
+    <% } else if (!search_ && name){ %>
+        <h3>There is no equipment found with the name <%= name %></h3>
+    <% } %>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+
+            if (name.length < 2) {
+                alert("Entered value must be at least 2 non-space characters long.");
+                return false; // prevents form submission
+            }
+            return true; // allows form submission
+        }
+    </script>
+
+</div>
